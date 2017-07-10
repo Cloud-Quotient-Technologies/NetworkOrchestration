@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="Myapp">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Cloud Management Client</title>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+
+</head>
+<body ng-controller="CloudController" style="width: 600px;">
+<h1>Cloud Device Management Tool</h1>
+<button ng-click="getDetails()">Show all device details</button>
+<button ng-click="hideDetails()">Hide all device details</button>
+
+<div ng-show=show>
+<h3>Available Device Details</h3>
+<table cellpadding="2" cellspacing="2" border="1">
+	<thead>
+	<tr>
+		<th>Router</th>
+		<th>ID</th>
+		<th>IPADDRESS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "details in result.data">
+			<td>{{details.name}}</td>
+			<td>{{details.id}}</td>
+			<td>{{details.ip_address}}</td>
+		</tr>
+	</tbody> 
+</table>
+</div>
+
+<div>
+<h3>Choose the protocol to be configured</h3>
+<button ng-click="toggleBGP()">BGP Neighbor</button>
+</div>
+
+<div ng-show=showBGPoptions>
+<form ng-submit="submit()">
+  <p>Number of instances:</p>
+  <p><input type="text" ng-model="NumInst" /></p>
+  <p>IP Address Network to be assigned to the instances:</p>
+  <p><input type="text" ng-model="IpNetw" /></p>
+  <p><input type="button" value="Send" ng-click="submit(NumInst, IpNetw)"/></p>
+  <p>Values entered by you:</p>
+     Instances: {{NumInst}}
+     <br>IP Address network: {{IpNetw}}</br>
+BGP DATA: {{bgp}}
+  <pre>{{display}}</pre>
+  <br>Post Data Submition: {{UpdateReturn}}</br>
+<p>StatusCode: {{statusval}}</p>
+<p>Status: {{statustext}}</p>
+<p>Response Headers: {{headers}}</p>
+</form>
+</div>
+</body>
+</html>

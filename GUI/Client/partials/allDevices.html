@@ -1,0 +1,19 @@
+<div id="list">
+<h2>Available Device Details</h2>
+<table cellpadding="2" cellspacing="2" border="1">
+	<thead>
+    <tr>
+    	<th>Router</th>
+    	<th>ID</th>
+    	<th>IPADDRESS</th>
+    	</tr>
+    </thead>
+    <tbody>
+    	<tr ng-repeat = "details in result.data">
+    		<td>{{details.name}}</td>
+    		<td>{{details.id}}</td>
+    		<td>{{details.ip_address}}</td>
+    	</tr>
+    </tbody> 
+</table>
+</div>
